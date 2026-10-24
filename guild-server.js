@@ -106,7 +106,7 @@ const server = http.createServer(async (req, res) => {
   if (req.method === "GET" && (url.pathname === "/" || url.pathname === "/discord-inspired.html")) {
     fs.readFile(PAGE, (error, page) => {
       if (error) return json(res, 404, { error: "Arquivo da interface não encontrado." });
-      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "Content-Length": page.length }); res.end(page);
+      res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store", "Content-Length": Buffer.byteLength(page), "X-Content-Type-Options": "nosniff", "Referrer-Policy": "strict-origin-when-cross-origin", "X-Frame-Options": "DENY" }); res.end(page);
     }); return;
   }
 
