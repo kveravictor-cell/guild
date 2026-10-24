@@ -110,6 +110,8 @@ const server = http.createServer(async (req, res) => {
     }); return;
   }
 
+  if (req.method === "GET" && url.pathname === "/healthz") return json(res, 200, { ok: true });
+
   if (req.method === "POST" && ["/api/auth/register", "/api/auth/login"].includes(url.pathname)) {
     if (!authRateAllowed(req)) return json(res, 429, { error: "Muitas tentativas. Aguarde um minuto." });
     try {
