@@ -1,0 +1,12 @@
+{
+  "name": "guild-chat-prototype",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Protótipo de comunidades e chat para implantação em hospedagem Node",
+  "scripts": {
+    "start": "node guild-server.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
